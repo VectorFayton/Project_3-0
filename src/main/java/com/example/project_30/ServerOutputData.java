@@ -43,7 +43,7 @@ public class ServerOutputData implements Runnable {
     private void sendMessage() {
         String message = message_text_field.getText();
         if (!message.isEmpty()) {
-            chat_history_area.appendText("Me " + new Date() + ": " + message + "\n");
+            chat_history_area.appendText(String.format("Me (%s): %s \n", new Date(), message));
             message_text_field.clear();
         }
     }

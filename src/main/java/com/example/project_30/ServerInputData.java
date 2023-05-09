@@ -22,7 +22,7 @@ public class ServerInputData implements Runnable {
 
             BufferedReader input_from_client = new BufferedReader(new InputStreamReader(input_stream));
             while (true) {
-                chat_history.appendText("Client " + new Date() + ": " + input_from_client.readLine() + "\n");
+                chat_history.appendText(String.format("Client (%s): %s \n", new Date(), input_from_client.readLine()));
             }
 
         } catch (IOException exception) {

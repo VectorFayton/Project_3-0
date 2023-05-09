@@ -23,7 +23,7 @@ public class ClientInputData implements Runnable {
 
             BufferedReader input_from_server = new BufferedReader(new InputStreamReader(input_stream));
             while (true) {
-                chat_history.appendText("Server " + new Date() + ": " + input_from_server.readLine() + "\n");
+                chat_history.appendText(String.format("Server (%s): %s \n", new Date(), input_from_server.readLine()));
             }
         } catch (IOException exception) {
             throw new RuntimeException(exception);
