@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 public class ClientInputData implements Runnable {
     InputStream input_stream;
@@ -22,7 +23,7 @@ public class ClientInputData implements Runnable {
 
             BufferedReader input_from_server = new BufferedReader(new InputStreamReader(input_stream));
             while (true) {
-                chat_history.appendText("Server: " + input_from_server.readLine() + "\n");
+                chat_history.appendText("Server " + new Date() + ": " + input_from_server.readLine() + "\n");
             }
         } catch (IOException exception) {
             throw new RuntimeException(exception);

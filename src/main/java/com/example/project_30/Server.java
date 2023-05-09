@@ -18,7 +18,7 @@ import java.net.Socket;
 public class Server extends Application {
     private TextField text_field_for_message;
     private TextArea chat_history_area;
-    private ListView<String> userList;
+    private ListView<String> user_list;
     @Override
     public void start(Stage primary_stage) {
         BorderPane root = new BorderPane();
@@ -30,9 +30,9 @@ public class Server extends Application {
         root.setCenter(chat_history_area);
 
         // User list
-        userList = new ListView<>();
-        userList.setPrefWidth(150);
-        root.setRight(userList);
+        user_list = new ListView<>();
+        user_list.setPrefWidth(150);
+        root.setRight(user_list);
 
         // Chatbox
         text_field_for_message = new TextField();
@@ -57,7 +57,7 @@ public class Server extends Application {
                 chat_history_area.appendText("New client is pop up \n");
 
                 ServerInputData input_from_client = new ServerInputData(socket.getInputStream(), chat_history_area);
-                ServerOutputData output_to_client = new ServerOutputData(socket.getOutputStream(), text_field_for_message, chat_history_area);
+                ServerOutputData output_to_client = new ServerOutputData(socket.getOutputStream(), text_field_for_message, chat_history_area, send_button);
 
                 Thread input_thread = new Thread(input_from_client);
                 Thread output_thread = new Thread(output_to_client);

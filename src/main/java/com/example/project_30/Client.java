@@ -18,7 +18,7 @@ public class Client extends Application {
     Socket socket;
     private TextField text_field_for_message;
     private TextArea chat_history_area;
-    private ListView<String> userList;
+    private ListView<String> user_list;
 
     @Override
     public void start(Stage primary_stage) {
@@ -31,9 +31,9 @@ public class Client extends Application {
         root.setCenter(chat_history_area);
 
         // User list
-        userList = new ListView<>();
-        userList.setPrefWidth(150);
-        root.setRight(userList);
+        user_list = new ListView<>();
+        user_list.setPrefWidth(150);
+        root.setRight(user_list);
 
         // Chatbox
         text_field_for_message = new TextField();
@@ -52,6 +52,7 @@ public class Client extends Application {
         try {
             socket = new Socket("localhost", 8000);
             chat_history_area.appendText("Request sent successfully \n");
+
         }
         catch (IOException ex) {
             chat_history_area.appendText(ex.toString() + '\n');
@@ -59,7 +60,7 @@ public class Client extends Application {
             try {
 
                 ClientInputData input_from_server = new ClientInputData(socket.getInputStream(), chat_history_area);
-                ClientOutputData output_to_server = new ClientOutputData(socket.getOutputStream(), text_field_for_message, chat_history_area);
+                ClientOutputData output_to_server = new ClientOutputData(socket.getOutputStream(), text_field_for_message, chat_history_area, send_button);
 
                 Thread input_thread = new Thread(input_from_server);
                 Thread output_thread = new Thread(output_to_server);
