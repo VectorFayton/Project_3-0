@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ServerInputData implements Runnable {
@@ -19,10 +20,10 @@ public class ServerInputData implements Runnable {
     @Override
     public void run(){
         try {
-
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             BufferedReader input_from_client = new BufferedReader(new InputStreamReader(input_stream));
             while (true) {
-                chat_history.appendText(String.format("Client (%s): %s \n", new Date(), input_from_client.readLine()));
+                chat_history.appendText(String.format("Client (%s): %s \n", format.format(new Date()), input_from_client.readLine()));
             }
 
         } catch (IOException exception) {

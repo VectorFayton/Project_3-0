@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ClientOutputData implements  Runnable {
@@ -38,9 +39,10 @@ public class ClientOutputData implements  Runnable {
 
     }
     private void sendMessage() {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         String message = message_text_field.getText();
         if (!message.isEmpty()) {
-            chat_history_area.appendText(String.format("Me (%s): %s \n", new Date(), message));
+            chat_history_area.appendText(String.format("Me (%s): %s \n", format.format(new Date()), message));
             message_text_field.clear();
         }
     }
