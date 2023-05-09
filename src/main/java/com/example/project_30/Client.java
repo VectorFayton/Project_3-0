@@ -51,7 +51,7 @@ public class Client extends Application {
         primary_stage.show();
         try {
             socket = new Socket("localhost", 8000);
-            chat_history_area.appendText("Request sent successfully \n");
+            chat_history_area.appendText("Request sent successfully \n" + socket.getInetAddress() + "\n");
 
         }
         catch (IOException ex) {

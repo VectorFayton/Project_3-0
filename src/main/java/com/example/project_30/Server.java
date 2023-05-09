@@ -52,7 +52,7 @@ public class Server extends Application {
         new Thread(() -> {
             try {
                 ServerSocket server_socket = new ServerSocket(8000);
-                chat_history_area.appendText("Waiting for client request \n");
+                chat_history_area.appendText("Waiting for client request \n" + server_socket.getInetAddress().getHostAddress() + "\n");
                 Socket socket = server_socket.accept();
                 chat_history_area.appendText("New client is pop up \n");
 
