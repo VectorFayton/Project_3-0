@@ -46,6 +46,8 @@ public class TCPPacketServer extends Application {
                     output_stream_to_client.write("Packet's serial number " + packet_serial_number + " is received" + "\n");
                     output_stream_to_client.flush();
                     if (data_of_packet_from_client.equalsIgnoreCase("close")) {
+                        chat_history_area.setText("Closed");
+                        System.exit(0);
                         primaryStage.close();
                     }
                 }

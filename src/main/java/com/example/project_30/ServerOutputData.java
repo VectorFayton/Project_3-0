@@ -26,17 +26,17 @@ public class ServerOutputData implements Runnable {
 
     @Override
     public void run() {
-        PrintStream input_to_client = new PrintStream(output_stream);
+        PrintStream output_to_client = new PrintStream(output_stream);
 
         message_text_field.setOnAction(e -> {
             String message = message_text_field.getText();
-            input_to_client.println(message);
+            output_to_client.println(message);
             sendMessage();
         });
 
         send_button.setOnAction(e -> {
             String message = message_text_field.getText();
-            input_to_client.println(message);
+            output_to_client.println(message);
             sendMessage();
         });
 
